@@ -115,7 +115,7 @@ export class MediaPlayerComponent {
     } else if (this.videoRef.nativeElement.canPlayType('application/vnd.apple.mpegurl')) {
       this.videoRef.nativeElement.src = this.hlsUrl;
       this.videoRef.nativeElement.addEventListener('loadedmetadata', () => {
-        this.videoRef.nativeElement.play();
+        // this.videoRef.nativeElement.play();
       });
     }
   }

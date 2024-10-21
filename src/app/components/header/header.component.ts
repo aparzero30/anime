@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -10,7 +10,10 @@ import {NgClass} from "@angular/common";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements OnInit {
+  ngOnInit(): void {
+      this.setTrendingActive();
+  }
 
 
   trendingActive = true;
@@ -24,9 +27,7 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('popular', { static: true }) popularRef!: ElementRef;
   @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
 
-  ngAfterViewInit(): void {
-    this.setTrendingActive();
-  }
+
 
 
 
