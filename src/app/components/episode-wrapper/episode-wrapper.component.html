@@ -1,0 +1,22 @@
+<div class="col-12 d-flex flex-column episode-wrapper ">
+  <app-media-player [sources]="sources" *ngIf="showVideoPlayer" [episodeName]="selectedEpisodeName"
+                    [color]="color"
+  ></app-media-player>
+
+  <section class="col-12 d-flex flex-wrap flex-row">
+    <div class="col-3 col-xl-1 col-xxl-1 col-lg-1 p-1" *ngFor="let ep of episodes"
+         (click)="getEpisodeSources(ep.id, ep.number, ep.title)"
+         (mouseenter)="setHoveredId(ep.id)"
+         (mouseleave)="setHoveredId('')">
+      <div class="col-12 pt-3 pb-3 d-flex flex-column gap-0 align-items-center justify-content-center ep-card"
+           [ngStyle]="{
+               'background-color': hoveredEpisodeId === ep.id || selectedEpisodeId === ep.id ? color : 'transparent',
+                'border-color':  hoveredEpisodeId === ep.id || selectedEpisodeId === ep.id  ? color : 'var(--primary-color)',
+            }"
+           [ngClass]="{'ep-card-active': selectedEpisodeId === ep.id}">
+        <label class="text-center">Episode<br>{{ep.number}}</label>
+      </div>
+    </div>
+
+  </section>
+</div>

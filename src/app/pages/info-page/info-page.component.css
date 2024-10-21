@@ -1,0 +1,16 @@
+.info-page{
+  overflow: auto;
+}
+.episode-character{
+  background-color: var(--light-bg);
+  border-radius: 7px;
+}
+.button-wrapper button{
+  font-size: var(--button-font);
+  font-weight: bold;
+  border-radius: 3px;
+  background-color: transparent;
+}
+.media-wrapper{
+  overflow: hidden;
+}

@@ -1,0 +1,26 @@
+.header ul{
+  list-style: none;
+  font-size: var(--button-font);
+  margin: 0;
+  /*background-color: var(--light-bg);*/
+  border-style: solid;
+  border-width: 0 0 2px;
+  border-color: var(--light-bg);
+}
+.header li{
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+ .active{
+  /*background-color: var(--primary-color);*/
+  color: white;
+}
+.highlight{
+  background-color: var(--primary-color);
+  position: absolute;
+  z-index: -1;
+  transition: top 0.3s ease, left 0.3s ease; /* Transition properties */
+  border-radius: 3px;
+}

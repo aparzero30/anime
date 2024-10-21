@@ -1,0 +1,12 @@
+<section class="col-12 d-flex  page-control d-flex align-items-xxl-center align-items-xl-center align-items-lg-center gap-3 justify-content-xl-end justify-content-xxl-end justify-content-lg-end">
+    <label class="p-3 pt-1 pb-1 col-1">PAGE </label>
+    <section class="d-flex gap-1 flex-wrap">
+      <i
+        class="box"
+        *ngFor="let page of [].constructor(maxPageSize - currentPage + 1); let i = index"
+        [ngClass]="{'box-active': selectedPage === currentPage + i}"
+        (click)="setCurrentPage(currentPage+i)"
+      >{{currentPage + i}}</i>
+    </section>
+
+</section>

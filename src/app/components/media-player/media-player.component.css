@@ -1,0 +1,29 @@
+.video-player video {
+  border-radius: 7px;
+}
+.video-player select,.video-player option{
+  font-size: var(--medium-font);
+  border-style: solid;
+  border-radius: 7px;
+  background-color:var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+.options-bar{
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+.options-bar h1{
+  font-size: var(--medium-font);
+  margin: 0;
+  color: white;
+}
+.options-bar button{
+  border-width: 1px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 7px;
+  font-size: var(--medium-font);
+  font-weight: bolder;
+  border-color: white;
+}

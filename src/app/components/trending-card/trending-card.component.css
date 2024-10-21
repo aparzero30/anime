@@ -1,0 +1,35 @@
+.trending-card{
+  background-color: var(--light-bg);
+  border-radius: 5px;
+  cursor:  pointer;
+  font-size: var(--medium-font);
+  overflow: hidden;
+}
+.trending-card img{
+  /*height: 40%;*/
+  /*max-height: 40%;*/
+  /*min-height: 40%;*/
+  height: calc(50% * 2);
+  min-height: calc(50% * 2);
+  border-radius: 5px;
+  max-height: 140px;
+}
+.trending-card:hover{
+  background-color: var(--primary-color);
+  color: white;
+}
+.trending-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1; /* Limits to 2 lines */
+  line-clamp: 1; /* Fallback for non-WebKit browsers */
+  margin: 0 ;
+}
+
+.trending-card label{
+  margin: 0;
+  width: max-content;
+  border-radius: 3px;
+  font-size: var(--small-font);
+}

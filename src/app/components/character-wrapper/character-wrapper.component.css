@@ -1,0 +1,16 @@
+.character-card img{
+  height: calc(50% * 2);
+  max-height: 164px;
+  border-radius: 4px;
+}
+.character-card{
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.character-card p{
+  font-size: var(--medium-font);
+  margin: 0;
+}
+.char-panel{
+  max-height: max-content;
+}

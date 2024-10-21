@@ -1,0 +1,11 @@
+.error button{
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  font-size: var(--medium-font);
+  border: none;
+}
+.error label{
+  font-weight: bold;
+  font-size: var(--medium-font);
+}

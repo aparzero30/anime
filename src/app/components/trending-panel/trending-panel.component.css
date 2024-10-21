@@ -1,0 +1,34 @@
+.anime-list-panel{
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--light-bg);
+  border-radius: 5px;
+}
+.anime-list-panel h1{
+  font-size: var(--large-font);
+  margin: 0;
+  padding: 0;
+}
+.anime-list-panel button{
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--medium-font);
+  border-radius: 5px;
+  min-width: 100px;
+}
+.anime-list-panel i{
+  color:white;
+  font-size: var(--medium-font);
+}
+.current-page label{
+  font-size: var(--small-font);
+  color: var(--primary-color);
+  font-weight: bold;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--primary-color);
+  border-radius: 3px;
+  text-align: left ;
+
+}

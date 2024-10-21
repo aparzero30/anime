@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --extra-large-font: clamp(60px, 1.5vw + 1rem, 80px);
+  --button-font: clamp(12px, 1vw + 1rem, 14px);
+  --large-font: clamp(20px, 1.5vw + 1rem, 35px);
+  --medium-font: clamp(10px, 0.5vw + 1rem, 13px);
+  --small-font: clamp(8px, 0.5vw + 1rem, 11px);
+
+  --primary-color: #000000;;
+  --secondary-color: #2372CA;
+  --tertiary-color: #287DBF;
+
+
+  --dark-bg: rgb(17, 17, 17);
+  --light-bg: #dfdfdf;
+  --dark-ligth: rgba(104, 104, 104, 0.75);
+}
+body, html{
+  font-family: "Poppins", sans-serif;
+  overflow: auto;
+}

@@ -1,0 +1,13 @@
+<div class="col-12 banner" [ngStyle]="{'background-image': 'url(' + bannerImage + ')'}">
+  <div class="col-12 p-3 d-flex flex-column gradient">
+    <h1>{{title}}</h1>
+    <section class="col-12 d-flex">
+      <img [src]="posterImage" class="col-4 col-xl-1 col-xxl-1 col-lg-1"/>
+      <div class="col-8 col-xl-11 col-xxl-11 col-lg-11 p-2 pt-0 d-flex gap-2 flex-column">
+        <p>{{description}}</p>
+        <button class="col-12 col-xl-1 col-xxl-1 col-lg-1 p-4 pt-2 pb-2" [ngStyle]="{'background-color': DesignUtil.darkenColor(color)}">Save</button>
+
+      </div>
+    </section>
+  </div>
+</div>

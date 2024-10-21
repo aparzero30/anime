@@ -1,0 +1,20 @@
+<div class="col-12 d-flex align-items-center justify-content-center p-1 flex-column video-player gap-2">
+  <div class="col-12 p-2 d-flex align-items-center options-bar">
+    <h1 class="col-4 col-xl-6 col-xxl-6 col-lg-6">{{episodeName}}</h1>
+    <div class="d-flex col-8 col-xl-6 col-xxl-6 col-lg-6 justify-content-end gap-1 p-1">
+      <select class="p-2  col-xl-2 col-xxl-2 col-lg-2 col-6"
+      >
+        <option>Quality</option>
+        <option *ngFor="let source of sources" [ngValue]="source.url">
+          {{source.quality}}
+        </option>
+      </select>
+      <button class="col-xl-2 col-xxl-2 col-lg-2 col-6 p-2" (click)="download()"
+      >
+        Download
+        <i class="fa-solid fa-spinner fa-spin" *ngIf="downloadLoading"></i>
+      </button>
+    </div>
+  </div>
+  <video class="col-12" #video controls width="100%" height="auto"></video>
+</div>

@@ -1,0 +1,22 @@
+<div class="col-12 d-flex flex-column align-items-center mt-2 p-2 anime-list-panel">
+  <app-loading class="col-12 col-xxl-3 col-xl-3 col-lg-3" *ngIf="isLoading"></app-loading>
+  <div class="col-12 d-flex p-2 justify-content-center align-items-center"  *ngIf="!isLoading">
+    <h1 class="col-4">Trending</h1>
+    <section class="col-8 d-flex justify-content-end gap-1">
+      <button class="col-1 p-2" *ngIf="currentPage !== 1" (click)="decrementPage()">
+        <i class="fa-solid fa-spinner fa-spin" *ngIf="previousLoading"></i>
+        <span *ngIf="!previousLoading">Previous</span>
+      </button>
+      <button class="col-1 p-2" *ngIf="hasNextPage" (click)="incrementPage()">
+        <span *ngIf="!nextLoading">Next</span>
+        <i class="fa-solid fa-spinner fa-spin" *ngIf="nextLoading"></i>
+      </button>
+    </section>
+  </div>
+  <section class="col-12 d-flex flex-wrap" >
+    <div class="col-12 p-1 d-flex current-page" *ngIf="!isLoading && !nextLoading && !previousLoading">
+      <label class="p-3 pt-2 pb-2" >{{"Page: "+currentPage}}</label>
+    </div>
+    <app-trending-card class="col-6 col-lg-2 col-xxl-2 col-xl-2" *ngFor="let animePreview of trendingResult?.results" [animePreview]="animePreview"></app-trending-card>
+  </section>
+</div>

@@ -1,0 +1,8 @@
+{
+  "/aniwatch": {
+    "target": "https://api-anime-rouge.vercel.app",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

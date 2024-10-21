@@ -1,0 +1,11 @@
+<div class="col-12 d-flex flex-wrap char-panel">
+  <section class="col-12 col-md-6 col-xxl-2 col-lg-2 col-xl-2 p-1" *ngFor="let char of characters">
+    <div class="col-12 d-flex flex-row p-1  character-card">
+      <img [src]="char.image" class="col-6">
+      <section class="col-6 d-flex flex-column p-1">
+        <p>{{char.name.full}}</p>
+        <p>{{char.name.native}}</p>
+      </section>
+    </div>
+  </section>
+</div>

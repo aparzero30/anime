@@ -1,0 +1,49 @@
+<div class="col-12 info-page pb-3 d-flex align-items-center flex-column gap-2">
+  <app-header class="col-12"></app-header>
+  <app-loading class="col-12 col-xxl-3 col-xl-3 col-lg-3" *ngIf="isLoading"></app-loading>
+  <div class="col-11 d-flex pt-2 gap-2 flex-column"  *ngIf="!isLoading">
+    <app-banner class="col-12"
+                [title]="animeInfo?.title?.english"
+                [description]="animeInfo?.description"
+                [artwork]="animeInfo?.artwork"
+                [genres]="animeInfo?.genres"
+                [color]="animeInfo?.color"
+                [bannerUrl]="animeInfo?.cover"
+                [posterUrl]="animeInfo?.image"
+    ></app-banner>
+    <div class="col-12 episode-character p-2">
+     <section class="button-wrapper d-flex align-items-center gap-2 col-12 pt-2 pb-2">
+       <button
+         (click)="setEpisodesActive()"
+         class="p-3 pt-2 pb-2"
+         [ngStyle]="{
+    'background-color': episodesActive ? DesignUtil.darkenColor(animeInfo?.color) : 'transparent',
+    'border': episodesActive ? '1px solid '+DesignUtil.darkenColor(animeInfo?.color) : '1px solid var(--primary-color)',
+    'color': episodesActive ? 'white' : 'inherit'
+  }">
+         Episodes
+       </button>
+
+       <button
+         (click)="setCharactersActive()"
+         class="p-3 pt-2 pb-2"
+         [ngStyle]="{
+    'background-color': charactersActive ? DesignUtil.darkenColor(animeInfo?.color) : 'transparent',
+    'border': charactersActive ? '1px solid '+DesignUtil.darkenColor(animeInfo?.color) : '1px solid var(--primary-color)',
+    'color': charactersActive ? 'white' : 'inherit'
+  }">
+         Characters
+       </button>
+
+     </section>
+      <div #mediaWrapper  class="col-12 d-flex media-wrapper">
+<!--        <app-episode-wrapper *ngIf="episodesActive" class="col-12" [episodes]="animeInfo?.episodes"  [color]="DesignUtil.darkenColor(animeInfo?.color)"></app-episode-wrapper>-->
+<!--        <app-character-wrapper *ngIf="charactersActive" class="col-12" [characters]="animeInfo?.characters"></app-character-wrapper>-->
+        <app-episode-wrapper class="col-12" [animeId]="animeInfo?.id" [episodes]="animeInfo?.episodes"  [color]="DesignUtil.darkenColor(animeInfo?.color)"></app-episode-wrapper>
+        <app-character-wrapper  class="col-12" [characters]="animeInfo?.characters"></app-character-wrapper>
+      </div>
+
+    </div>
+  </div>
+
+</div>
