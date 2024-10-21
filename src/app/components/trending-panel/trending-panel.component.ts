@@ -64,12 +64,10 @@ export class TrendingPanelComponent implements OnInit{
     this.aniListService.getTrending(this.currentPage).subscribe({
       next: (v) => {
         this.trendingResult = v;
-        console.log(this.trendingResult?.results);
         this.isLoading = false;
 
         if(this.trendingResult){
           this.hasNextPage = this.trendingResult?.hasNextPage;
-
         }
         this.previousLoading = false;
         this.nextLoading = false;
