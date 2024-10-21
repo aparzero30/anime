@@ -16,6 +16,6 @@
     <div class="col-12 p-1 d-flex current-page" *ngIf="!isLoading && !nextLoading && !previousLoading">
       <label class="p-3 pt-2 pb-2" >{{"Page: "+currentPage}}</label>
     </div>
-    <app-trending-card class="col-6 col-lg-2 col-xxl-2 col-xl-2" *ngFor="let animePreview of popularResult?.results" [animePreview]="animePreview"></app-trending-card>
+    <app-trending-card class="col-6 col-md-4 col-lg-2 col-xxl-2 col-xl-2" *ngFor="let animePreview of popularResult?.results" [animePreview]="animePreview"></app-trending-card>
   </section>
 </div>
