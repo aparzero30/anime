@@ -42,16 +42,15 @@ export class HeaderComponent implements AfterViewInit {
   //   this.setTrendingActive();
   // }
   ngAfterViewInit(): void {
-    // if(this.trendingActive) {
-    //   this.setTrendingActive()
-    // }
-    // else if(this.popularActive){
-    //   this.setPopularActive()
-    // }
-    // else{
-    //   this.setSearchActive()
-    // }
-    this.setPopularActive();
+    if(this.trendingActive) {
+      this.setTrendingActive()
+    }
+    else if(this.popularActive){
+      this.setPopularActive()
+    }
+    else{
+      this.setSearchActive()
+    }
   }
 
   @HostListener('window:resize')
