@@ -20,7 +20,7 @@
 
   <section class="col-12 d-flex flex-wrap flex-row">
     <div class="col-3 col-xl-1 col-xxl-1 col-lg-1 p-1" *ngFor="let ep of episodes"
-         (click)="getEpisodeSources(ep.id, ep.number, ep.title)"
+         (click)="getEpisodeSources(ep)"
          (mouseenter)="setHoveredId(ep.id)"
          (mouseleave)="setHoveredId('')">
       <div class="col-12 pt-3 pb-3 d-flex flex-column gap-0 align-items-center justify-content-center ep-card"

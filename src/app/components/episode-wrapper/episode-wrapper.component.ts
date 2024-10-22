@@ -79,19 +79,18 @@ export class EpisodeWrapperComponent implements OnInit{
        }
 
        if(episode){
-         this.getEpisodeSources(episode.id,episode.number,episode.title)
+         this.getEpisodeSources(episode)
          this.selectedEpisodeNumber = episode.number;
 
          this.setSelectedIndex(episode);
 
        }
-       console.log("RouteId: ",routeEpisodeId)
     }
 
     else{
       if(this.episodes !==undefined){
         const currentEpisode = this.episodes[0];
-        this.getEpisodeSources(currentEpisode.id,currentEpisode.number,currentEpisode.title)
+        this.getEpisodeSources(currentEpisode)
       }
     }
     this.countdown();
@@ -100,8 +99,13 @@ export class EpisodeWrapperComponent implements OnInit{
 
   setSelectedIndex(episode:Episode){
     const index = this.episodes?.indexOf(episode);
-    if(index && index > -1){
+    if(index && index > -1 && this.episodes){
       this.selectedEpisodeIndex = index;
+      const ep = this.episodes[index];
+      this.selectedEpisodeNumber = ep.number;
+      this.selectedEpisodeIndex = index;
+      this.selectedEpisodeId = ep.id
+      this.selectedEpisodeName = ep.title
     }
   }
 
@@ -109,14 +113,16 @@ export class EpisodeWrapperComponent implements OnInit{
     this.selectedEpisodeIndex =  ++this.selectedEpisodeIndex;
     if(this.episodes){
       const episode = this.episodes[this.selectedEpisodeIndex];
-      this.getEpisodeSources(episode.id,episode.number,episode.title)
+      this.setSelectedIndex(episode);
+      this.getEpisodeSources(episode)
     }
   }
   changeToPrevEp(){
     this.selectedEpisodeIndex =  --this.selectedEpisodeIndex;
     if(this.episodes){
       const episode = this.episodes[this.selectedEpisodeIndex];
-      this.getEpisodeSources(episode.id,episode.number,episode.title)
+      this.setSelectedIndex(episode);
+      this.getEpisodeSources(episode)
     }
   }
 
@@ -145,14 +151,15 @@ ngOnDestroy() {
 }
 
 
-  getEpisodeSources(episodeId:string,episodeNumber:number,epName:string){
+  getEpisodeSources(episode:Episode){
 
     this.showVideoPlayer = false;
-    this.selectedEpisodeName = epName;
-    this.selectedEpisodeId = episodeId;
-    this.selectedEpisodeNumber = episodeNumber;
+    this.selectedEpisodeName = episode.title;
+    this.selectedEpisodeId = episode.id;
+    this.selectedEpisodeNumber = episode.number;
+    this.setSelectedIndex(episode)
 
-    this.aniListService.getEpisodeSources(episodeId,episodeNumber,Number(this.animeId)).subscribe({
+    this.aniListService.getEpisodeSources(this.selectedEpisodeId,this.selectedEpisodeNumber ,Number(this.animeId)).subscribe({
       next: (v) => {
         this.mediaDetails = v;
         this.sources = this.mediaDetails.sources;
