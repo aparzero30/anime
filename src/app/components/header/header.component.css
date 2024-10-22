@@ -18,6 +18,7 @@
   color: white;
 }
 .highlight{
+  display: none;
   width: 0;
   max-width: 0;
   z-index: -1;
