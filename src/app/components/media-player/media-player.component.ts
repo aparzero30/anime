@@ -1,9 +1,11 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {Source} from "../../models/Source";
-import Hls from "hls.js";
+import Hls, {Events} from "hls.js";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {VideoDownloadService} from "../../services/video-download.service";
+import {EpConfig} from "../../models/EpConfig";
+import {EpConfigUtil} from "../../util/EpConfigUtil";
 
 @Component({
   selector: 'app-media-player',
@@ -21,21 +23,33 @@ export class MediaPlayerComponent {
   @Input() sources!:Source[];
   @Input() episodeName!:string;
   @Input() color!:string;
+  @Input() episodeId!:string;
 
   downloadLoading   = false;
+
+  timeStamp = 0;
+
+  epConfig:EpConfig={
+    episodeId:"",
+    timeStamp:0
+  }
 
   @ViewChild('video', { static: true }) videoRef!: ElementRef<HTMLVideoElement>;
   private hls!: Hls;
 
   private hlsUrl = 'https://www039.anzeat.pro/streamhls/e8c588712d09a8d9f965bc9dac48ee68/ep.1.1728160179.360.m3u8';
 
+
   constructor(private videoDownloadService: VideoDownloadService) {}
 
-  // download() {
-  //   this.downloadLoading = true;
-  //   this.videoDownloadService.downloadVideo(this.hlsUrl);
-  //   this.downloadLoading = false;
-  // }
+
+  updateTimeStamp(event:Event) {
+    this.epConfig.timeStamp =  (event.target as HTMLVideoElement).currentTime;
+  }
+
+
+
+
 
   download() {
     this.downloadLoading = true;
@@ -48,10 +62,6 @@ export class MediaPlayerComponent {
       });
     this.downloadLoading = false;
   }
-
-
-
-
 
   selectHighestQuality(){
     let index360p =  0;
@@ -103,7 +113,9 @@ export class MediaPlayerComponent {
 
   ngOnInit() {
 
+    this.timeStamp = EpConfigUtil.getTimeStamp(this.episodeId)
     this.selectHighestQuality();
+    this.videoRef.nativeElement.currentTime = this.timeStamp;
 
     if (Hls.isSupported()) {
       this.hls = new Hls();
@@ -124,5 +136,8 @@ export class MediaPlayerComponent {
     if (this.hls) {
       this.hls.destroy();
     }
+    this.epConfig.episodeId = this.episodeId;
+    console.log(this.epConfig)
+    EpConfigUtil.save(this.epConfig)
   }
 }

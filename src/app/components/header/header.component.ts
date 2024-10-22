@@ -1,4 +1,13 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -29,6 +38,19 @@ export class HeaderComponent implements OnInit {
 
 
 
+  @HostListener('window:resize')
+  onResize() {
+    if(this.trendingActive) {
+      this.setTrendingActive()
+    }
+    else if(this.popularActive){
+      this.setPopularActive()
+    }
+    else{
+      this.setSearchActive()
+    }
+
+  }
 
 
 

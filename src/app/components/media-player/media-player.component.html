@@ -16,5 +16,5 @@
       </button>
     </div>
   </div>
-  <video class="col-12" #video controls width="100%" height="auto"></video>
+  <video class="col-12" #video controls width="100%" height="auto" (timeupdate)="updateTimeStamp($event)"></video>
 </div>
