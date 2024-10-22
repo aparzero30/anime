@@ -38,11 +38,11 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
 
 
-  ngOnInit(): void {
-    this.setTrendingActive();
-  }
+  // ngOnInit(): void {
+  //   this.setTrendingActive();
+  // }
   ngAfterViewInit(): void {
-    this.setTrendingActive();
+    // this.setTrendingActive();
   }
 
   @HostListener('window:resize')

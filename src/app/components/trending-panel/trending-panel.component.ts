@@ -27,6 +27,7 @@ export class TrendingPanelComponent implements OnInit{
   trendingResult:FetchResult|undefined = undefined;
 
   @Output() setError: EventEmitter<any> = new EventEmitter();
+  @Output() toggleHeader = new EventEmitter();
 
   nextLoading = false;
   previousLoading = false;
@@ -59,7 +60,7 @@ export class TrendingPanelComponent implements OnInit{
 
   getTrending(){
 
-
+  this.toggleHeader.emit();
 
     this.aniListService.getTrending(this.currentPage).subscribe({
       next: (v) => {
@@ -80,7 +81,6 @@ export class TrendingPanelComponent implements OnInit{
       },
       complete: () => console.info('complete'),
     });
-
 
   }
 
