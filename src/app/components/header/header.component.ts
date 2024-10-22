@@ -104,6 +104,7 @@ export class HeaderComponent implements AfterViewInit {
     highlightElement.style.minWidth = `${rect.width}px`; // Corrected camelCase
     highlightElement.style.maxHeight = `${rect.height}px`; // Corrected camelCase
     highlightElement.style.maxWidth = `${rect.width}px`; // Corrected camelCase
+    highlightElement.style.backgroundColor = 'var(--primary-color)';
   }
 
 
