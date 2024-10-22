@@ -3,6 +3,8 @@
     <li #trending class="p-3 pt-2 pb-2" [ngClass]="{'active': trendingActive}" (click)="setTrendingActive()">Trending</li>
     <li #popular class="p-3 pt-2 pb-2" [ngClass]="{'active': popularActive}" (click)="setPopularActive()">Popular</li>
     <li #search class="p-3 pt-2 pb-2" [ngClass]="{'active': searchActive}" (click)="setSearchActive()">Search</li>
+    <li #highlight class="highlight">
+    </li>
+
   </ul>
 </section>
-<section #highlight class="highlight"></section>

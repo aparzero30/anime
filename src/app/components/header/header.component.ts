@@ -8,20 +8,26 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import {NgClass} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
+
+  showHighlight = false;
+
   ngOnInit(): void {
+    this.showHighlight = true;
       this.setTrendingActive();
+
   }
 
 
@@ -38,19 +44,19 @@ export class HeaderComponent implements OnInit {
 
 
 
-  @HostListener('window:resize')
-  onResize() {
-    if(this.trendingActive) {
-      this.setTrendingActive()
-    }
-    else if(this.popularActive){
-      this.setPopularActive()
-    }
-    else{
-      this.setSearchActive()
-    }
-
-  }
+  // @HostListener('window:resize')
+  // onResize() {
+  //   if(this.trendingActive) {
+  //     this.setTrendingActive()
+  //   }
+  //   else if(this.popularActive){
+  //     this.setPopularActive()
+  //   }
+  //   else{
+  //     this.setSearchActive()
+  //   }
+  //
+  // }
 
 
 

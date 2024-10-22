@@ -139,6 +139,7 @@ export class MediaPlayerComponent {
       this.hls.destroy();
     }
     window.removeEventListener('beforeunload', this.saveConfig.bind(this));
+    this.saveConfig();
 
   }
 
