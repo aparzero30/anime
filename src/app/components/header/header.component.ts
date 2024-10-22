@@ -21,18 +21,9 @@ import {NgClass, NgIf} from "@angular/common";
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    this.showHighlight = true;
-    this.setTrendingActive();
-  }
 
-  showHighlight = false;
 
-  ngOnInit(): void {
-    this.showHighlight = true;
-      this.setTrendingActive();
 
-  }
 
 
   trendingActive = true;
@@ -47,6 +38,12 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
 
 
+  ngOnInit(): void {
+    this.setTrendingActive();
+  }
+  ngAfterViewInit(): void {
+    this.setTrendingActive();
+  }
 
   // @HostListener('window:resize')
   // onResize() {
