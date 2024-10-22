@@ -19,11 +19,7 @@ export interface AnimeInfo {
   description: string;
   status: string;
   releaseDate: number; // Assuming release date is a year
-  nextAiringEpisode?: {
-    airingTime: number;
-    timeUntilAiring: number;
-    episode: number;
-  };
+  nextAiringEpisode: Airing,
   rating: number;
   duration: number; // Duration in minutes
   genres: string[];
@@ -39,6 +35,12 @@ export interface ArtWork{
   img:string;
   providerId: string;
   type:string;
+}
+
+export interface Airing{
+  airingTime: number;
+  timeUntilAiring: number;
+  episode: number;
 }
 
 

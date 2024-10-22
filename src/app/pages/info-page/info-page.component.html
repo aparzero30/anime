@@ -39,7 +39,9 @@
       <div #mediaWrapper  class="col-12 d-flex media-wrapper">
 <!--        <app-episode-wrapper *ngIf="episodesActive" class="col-12" [episodes]="animeInfo?.episodes"  [color]="DesignUtil.darkenColor(animeInfo?.color)"></app-episode-wrapper>-->
 <!--        <app-character-wrapper *ngIf="charactersActive" class="col-12" [characters]="animeInfo?.characters"></app-character-wrapper>-->
-        <app-episode-wrapper class="col-12" [animeId]="animeInfo?.id" [episodes]="animeInfo?.episodes"  [color]="DesignUtil.darkenColor(animeInfo?.color)"></app-episode-wrapper>
+        <app-episode-wrapper class="col-12"
+                             [nextAiring]="animeInfo?.nextAiringEpisode"
+                             [animeId]="animeInfo?.id" [episodes]="animeInfo?.episodes"  [color]="DesignUtil.darkenColor(animeInfo?.color)"></app-episode-wrapper>
         <app-character-wrapper  class="col-12" [characters]="animeInfo?.characters"></app-character-wrapper>
       </div>
 
