@@ -118,7 +118,6 @@ export class HeaderComponent implements AfterViewInit {
     highlightElement.style.minWidth = `0px`;
     highlightElement.style.maxHeight = `0px`;
     highlightElement.style.maxWidth = `0px`;
-    alert("hello")
   }
 
 
