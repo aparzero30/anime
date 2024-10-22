@@ -40,9 +40,9 @@ export class HeaderComponent {
   @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
 
 
-  ngOnInit(): void {
-    this.setTrendingActive();
-  }
+  // ngOnInit(): void {
+  //   this.setTrendingActive();
+  // }
   // ngAfterViewInit(): void {
   //   if(this.trendingActive) {
   //     this.setTrendingActive()
@@ -80,21 +80,37 @@ export class HeaderComponent {
     this.toggleSearch.emit(false);
 
     console.log(this.trendingRef);
+
+
+
+
     this.moveHighlight(this.trendingRef.nativeElement)
+
   }
 
 
   setSearchActive(){
 
+    if(this.trendingRef){
+      this.moveHighlight(this.trendingRef.nativeElement)
+    }
+
+    this.moveHighlight(this.searchRef.nativeElement)
+
     this.trendingActive = false;
     this.searchActive = true;
     this.popularActive = false;
     this.toggleSearch.emit(true);
-    this.moveHighlight(this.searchRef.nativeElement)
+
+
 
   }
 
   setPopularActive(){
+    if(this.trendingRef){
+      this.moveHighlight(this.trendingRef.nativeElement)
+    }
+
     this.moveHighlight(this.popularRef.nativeElement)
     this.trendingActive = false;
     this.searchActive = false;
