@@ -40,7 +40,9 @@ export class MediaPlayerComponent {
   private hlsUrl = 'https://www039.anzeat.pro/streamhls/e8c588712d09a8d9f965bc9dac48ee68/ep.1.1728160179.360.m3u8';
 
 
-  constructor(private videoDownloadService: VideoDownloadService) {}
+  constructor(private videoDownloadService: VideoDownloadService) {
+    window.addEventListener('beforeunload', this.saveConfig.bind(this));
+  }
 
 
   updateTimeStamp(event:Event) {
@@ -136,8 +138,12 @@ export class MediaPlayerComponent {
     if (this.hls) {
       this.hls.destroy();
     }
+    window.removeEventListener('beforeunload', this.saveConfig.bind(this));
+
+  }
+
+  saveConfig(){
     this.epConfig.episodeId = this.episodeId;
-    console.log(this.epConfig)
     EpConfigUtil.save(this.epConfig)
   }
 }
