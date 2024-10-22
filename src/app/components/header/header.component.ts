@@ -20,7 +20,11 @@ import {NgClass, NgIf} from "@angular/common";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    this.showHighlight = true;
+    this.setTrendingActive();
+  }
 
   showHighlight = false;
 
