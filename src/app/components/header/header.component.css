@@ -15,11 +15,11 @@
   max-width: max-content;
 }
  .active{
-  background-color: var(--primary-color);
    color: white;
   /*color: white;*/
   border-radius: 3px;
 }
+
 .highlight{
   display: none;
   z-index: -1;
