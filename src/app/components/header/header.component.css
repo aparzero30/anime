@@ -12,6 +12,7 @@
   font-weight: bold;
   cursor: pointer;
   user-select: none;
+  max-width: max-content;
 }
  .active{
   /*background-color: var(--primary-color);*/
