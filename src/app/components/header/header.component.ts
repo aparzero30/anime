@@ -61,10 +61,10 @@ export class HeaderComponent implements OnInit {
 
 
   setTrendingActive(){
+    this.moveHighlight(this.trendingRef.nativeElement)
     this.trendingActive = true;
     this.searchActive = false;
     this.popularActive = false;
-    this.moveHighlight(this.trendingRef.nativeElement)
     this.toggleSearch.emit(false);
   }
 
