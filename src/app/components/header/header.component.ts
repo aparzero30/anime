@@ -35,7 +35,7 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('trending', { static: true }) trendingRef!: ElementRef;
   @ViewChild('search', { static: true }) searchRef!: ElementRef;
   @ViewChild('popular', { static: true }) popularRef!: ElementRef;
-  @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
+  // @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
 
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class HeaderComponent implements AfterViewInit {
 
 
   setTrendingActive(){
-    this.moveHighlight(this.trendingRef.nativeElement)
+    // this.moveHighlight(this.trendingRef.nativeElement)
     this.trendingActive = true;
     this.searchActive = false;
     this.popularActive = false;
@@ -71,7 +71,7 @@ export class HeaderComponent implements AfterViewInit {
 
 
   setSearchActive(){
-    this.moveHighlight(this.searchRef.nativeElement)
+    // this.moveHighlight(this.searchRef.nativeElement)
     this.trendingActive = false;
     this.searchActive = true;
     this.popularActive = false;
@@ -80,7 +80,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   setPopularActive(){
-    this.moveHighlight(this.popularRef.nativeElement)
+    // this.moveHighlight(this.popularRef.nativeElement)
     this.trendingActive = false;
     this.searchActive = false;
     this.popularActive = true;
@@ -89,21 +89,21 @@ export class HeaderComponent implements AfterViewInit {
   }
 
 
-  moveHighlight(element: HTMLElement) {
-    const highlightElement = this.highlightRef.nativeElement;
-    const rect = element.getBoundingClientRect();
-    highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
-    highlightElement.style.top = `${rect.top}px`;
-    highlightElement.style.left = `${rect.left}px`;
-    highlightElement.style.width = `${rect.width}px`;
-    highlightElement.style.height = `${rect.height}px`;
-    highlightElement.style.minHeight = `${rect.height}px`; // Corrected camelCase
-    highlightElement.style.minWidth = `${rect.width}px`; // Corrected camelCase
-    highlightElement.style.maxHeight = `${rect.height}px`; // Corrected camelCase
-    highlightElement.style.maxWidth = `${rect.width}px`; // Corrected camelCase
-    highlightElement.style.backgroundColor = 'var(--primary-color)';
-    highlightElement.style.display = 'block';
-  }
+  // moveHighlight(element: HTMLElement) {
+  //   const highlightElement = this.highlightRef.nativeElement;
+  //   const rect = element.getBoundingClientRect();
+  //   highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
+  //   highlightElement.style.top = `${rect.top}px`;
+  //   highlightElement.style.left = `${rect.left}px`;
+  //   highlightElement.style.width = `${rect.width}px`;
+  //   highlightElement.style.height = `${rect.height}px`;
+  //   highlightElement.style.minHeight = `${rect.height}px`; // Corrected camelCase
+  //   highlightElement.style.minWidth = `${rect.width}px`; // Corrected camelCase
+  //   highlightElement.style.maxHeight = `${rect.height}px`; // Corrected camelCase
+  //   highlightElement.style.maxWidth = `${rect.width}px`; // Corrected camelCase
+  //   highlightElement.style.backgroundColor = 'var(--primary-color)';
+  //   highlightElement.style.display = 'block';
+  // }
 
 
 

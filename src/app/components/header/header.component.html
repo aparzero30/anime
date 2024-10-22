@@ -1,6 +1,5 @@
 <section class="col-12 p-1 pt-0 pb-0 header d-flex align-items-center justify-content-center">
   <ul class="col-11 p-0 pb-2 pt-2 d-flex align-items-center flex-wrap gap-1 min-vh-10">
-    <li #highlight class="col-1 highlight"></li>
     <li #trending class="p-3 pt-2 pb-2" [ngClass]="{'active': trendingActive}" (click)="setTrendingActive()">Trending</li>
     <li #popular class="p-3 pt-2 pb-2" [ngClass]="{'active': popularActive}" (click)="setPopularActive()">Popular</li>
     <li #search class="p-3 pt-2 pb-2" [ngClass]="{'active': searchActive}" (click)="setSearchActive()">Search</li>
