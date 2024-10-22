@@ -100,7 +100,7 @@ export class HeaderComponent implements AfterViewInit {
   moveHighlight(element: HTMLElement) {
     const highlightElement = this.highlightRef.nativeElement;
     const rect = element.getBoundingClientRect();
-    alert(rect.width)
+    console.log(rect);
     highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
     highlightElement.style.top = `${rect.top}px`;
     highlightElement.style.left = `${rect.left}px`;
