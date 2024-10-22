@@ -3,7 +3,7 @@
   <app-search-bar class="col-11" *ngIf="showSearchBar" (setError)="setShowError($event)"></app-search-bar>
   <app-error class="col-5 col-xxl-2 col-xl-2 col-lg-2" *ngIf="showError"></app-error>
   <div class="col-11 d-flex flex-column" *ngIf="!showError && !showSearchBar">
-    <app-trending-panel class="col-12" (setError)="setShowError($event)" (toggleHeader)="handleEvent()"></app-trending-panel>
+    <app-trending-panel class="col-12" (setError)="setShowError($event)"></app-trending-panel>
     <app-popular-panel class="col-12" (setError)="setShowError($event)"></app-popular-panel>
   </div>
 

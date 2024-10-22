@@ -26,16 +26,7 @@ export class AnimePageComponent {
 
   showSearchBar = false;
 
-  @ViewChild(HeaderComponent, { static: true }) header: HeaderComponent | undefined;
-
   showError = false;
-
-  handleEvent(){
-    if(this.header){
-      this.header.setTrendingActive();
-    }
-  }
-
 
   setShowSearchBar(show:boolean) {
     this.showSearchBar = show;
