@@ -104,12 +104,12 @@ export class HeaderComponent implements AfterViewInit {
     highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
     highlightElement.style.top = `${rect.top}px`;
     highlightElement.style.left = `${rect.left}px`;
-    highlightElement.style.width = `${rect.width}px`;
-    highlightElement.style.height = `${rect.height}px`;
+    highlightElement.style.width = `${element.offsetWidth}px`;
+    highlightElement.style.height = `${element.offsetHeight}px`;
     highlightElement.style.minHeight = `${rect.height}px`; // Corrected camelCase
-    highlightElement.style.minWidth = `${rect.width}px`; // Corrected camelCase
-    highlightElement.style.maxHeight = `${rect.height}px`; // Corrected camelCase
-    highlightElement.style.maxWidth = `${rect.width}px`; // Corrected camelCase
+    highlightElement.style.minWidth = `${element.offsetWidth}px`; // Corrected camelCase
+    highlightElement.style.maxHeight = `${element.offsetHeight}px`; // Corrected camelCase
+    highlightElement.style.maxWidth = `${element.offsetHeight}px`; // Corrected camelCase
     highlightElement.style.backgroundColor = 'var(--primary-color)';
     highlightElement.style.display = 'block';
   }
