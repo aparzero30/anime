@@ -91,6 +91,7 @@ export class HeaderComponent {
 
   setSearchActive(){
 
+    this.searchActive = true;
     if(this.trendingRef){
       this.moveHighlight(this.trendingRef.nativeElement)
     }
@@ -98,7 +99,7 @@ export class HeaderComponent {
     this.moveHighlight(this.searchRef.nativeElement)
 
     this.trendingActive = false;
-    this.searchActive = true;
+
     this.popularActive = false;
     this.toggleSearch.emit(true);
 
