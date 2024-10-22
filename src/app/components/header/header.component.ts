@@ -109,13 +109,17 @@ export class HeaderComponent implements AfterViewInit {
     const highlightElement = this.highlightRef.nativeElement;
     const rect = element.getBoundingClientRect();
     console.log(rect);
+
+    const top  = rect.top === 0? 8 : rect.top;
+
+
     highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
-    highlightElement.style.top = `${rect.top}px`;
+    highlightElement.style.top = `${top}px`;
     highlightElement.style.left = `${rect.left}px`;
     highlightElement.style.width = `${rect.width}px`;
     highlightElement.style.height = `${rect.height}px`;
     highlightElement.style.minHeight = `${rect.height}px`; // Corrected camelCase
-    highlightElement.style.minWidth = `${rect.width}px`; // Corrected camelCase
+    // highlightElement.style.minWidth = `${rect.width}px`; // Corrected camelCase
     highlightElement.style.maxHeight = `${rect.height}px`; // Corrected camelCase
     highlightElement.style.maxWidth = `${rect.width}px`; // Corrected camelCase
     highlightElement.style.backgroundColor = 'var(--primary-color)';

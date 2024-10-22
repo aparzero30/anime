@@ -25,4 +25,5 @@
   z-index: -1;
   transition: top 0.3s ease, left 0.3s ease; /* Transition properties */
   border-radius: 3px;
+  min-width: 93px;
 }
