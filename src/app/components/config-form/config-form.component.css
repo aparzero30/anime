@@ -1,0 +1,28 @@
+.config-form{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(11, 11, 11, 0.52);
+  min-width: 100vw;
+}
+.config-form form{
+  background-color: white;
+  border-radius: 5px;
+
+}
+.config-form h1{
+  font-size: var(--large-font);
+}
+.config-form label, .config-form input{
+  font-size: var(--medium-font);
+  border-radius: 4px;
+}
+.config-form label{
+  font-weight: bolder;
+}
+.config-form section, .config-form input{
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--light-bg);
+  border-radius: 5px;
+}

@@ -18,3 +18,31 @@
   color: white;
 }
 
+.controls button, .controls i{
+  font-size: var(--medium-font);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+.controls i{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--button-font);
+}
+.controls button:hover, .controls i:hover{
+  background-color: var(--primary-color);
+  color: white;
+}
+.controls p{
+  font-size: var(--small-font);
+  margin: 0;
+}
+.controls label{
+  font-size: var(--medium-font);
+  font-weight: bold;
+  margin: 0;
+}

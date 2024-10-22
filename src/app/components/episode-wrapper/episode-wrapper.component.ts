@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Episode} from "../../models/AnimeInfo";
+import {Airing, Episode} from "../../models/AnimeInfo";
 import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {AniListService} from "../../services/ani-list.service";
 import {MediaDetails, Source} from "../../models/Source";
 import {MediaPlayerComponent} from "../media-player/media-player.component";
 import { Location } from '@angular/common';
+import {interval, Subscription} from "rxjs";
+import {ConfigFormComponent} from "../config-form/config-form.component";
 
 @Component({
   selector: 'app-episode-wrapper',
@@ -15,7 +17,8 @@ import { Location } from '@angular/common';
     MediaPlayerComponent,
     NgIf,
     NgClass,
-    NgStyle
+    NgStyle,
+    ConfigFormComponent
   ],
   templateUrl: './episode-wrapper.component.html',
   styleUrl: './episode-wrapper.component.css'
@@ -24,9 +27,18 @@ export class EpisodeWrapperComponent implements OnInit{
  @Input() episodes!:Episode[]|undefined;
  @Input() animeId!:string|undefined;
  @Input() color!:string;
+ @Input() nextAiring!:Airing|undefined;
+
+
+ configView = false;
 
 
  hoveredEpisodeId: string  = "";
+
+
+ showConfig(){
+   this.configView = true;
+ }
 
 
  setHoveredId(id:string){
@@ -39,8 +51,15 @@ export class EpisodeWrapperComponent implements OnInit{
 
   selectedEpisodeName = "";
   selectedEpisodeId = "";
+  fistEpisodeNumber = 0;
+  lastEpisodeNumber = 0;
+  selectedEpisodeNumber = 0
+  selectedEpisodeIndex = 0;
+
 
   showVideoPlayer = false;
+
+  private timerSubscription!: Subscription;
 
   constructor(private route: ActivatedRoute,
               private aniListService:AniListService,
@@ -48,26 +67,26 @@ export class EpisodeWrapperComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
-
     const routeEpisodeId = this.route.snapshot.paramMap.get("episode-id");
-    console.log("RouteId: ",routeEpisodeId)
-
-    console.log(this.episodes)
-
     if(routeEpisodeId !== undefined && routeEpisodeId !== null){
        this.selectedEpisodeId = routeEpisodeId;
 
-       const episode = this.episodes?.find(ep=>ep.id === this.selectedEpisodeId);
+       const episode = this.episodes?.find(ep=>ep.id === this.selectedEpisodeId)
+
+       if(this.episodes){
+         this.fistEpisodeNumber = this.episodes[0].number;
+         this.lastEpisodeNumber = this.episodes[this.episodes.length - 1].number;
+       }
 
        if(episode){
          this.getEpisodeSources(episode.id,episode.number,episode.title)
+         this.selectedEpisodeNumber = episode.number;
+
+         this.setSelectedIndex(episode);
+
        }
-
-
        console.log("RouteId: ",routeEpisodeId)
     }
-
 
     else{
       if(this.episodes !==undefined){
@@ -75,17 +94,63 @@ export class EpisodeWrapperComponent implements OnInit{
         this.getEpisodeSources(currentEpisode.id,currentEpisode.number,currentEpisode.title)
       }
     }
-
-
-
-
+    this.countdown();
   }
+
+
+  setSelectedIndex(episode:Episode){
+    const index = this.episodes?.indexOf(episode);
+    if(index && index > -1){
+      this.selectedEpisodeIndex = index;
+    }
+  }
+
+  changeToNextEp(){
+    this.selectedEpisodeIndex =  ++this.selectedEpisodeIndex;
+    if(this.episodes){
+      const episode = this.episodes[this.selectedEpisodeIndex];
+      this.getEpisodeSources(episode.id,episode.number,episode.title)
+    }
+  }
+  changeToPrevEp(){
+    this.selectedEpisodeIndex =  --this.selectedEpisodeIndex;
+    if(this.episodes){
+      const episode = this.episodes[this.selectedEpisodeIndex];
+      this.getEpisodeSources(episode.id,episode.number,episode.title)
+    }
+  }
+
+
+  countdown() {
+    this.timerSubscription = interval(1000).subscribe(() => {
+      if (this.nextAiring) {
+        this.nextAiring.timeUntilAiring--;
+
+        console.log(this.nextAiring.timeUntilAiring);
+
+        if (this.nextAiring.timeUntilAiring < 0) {
+          this.timerSubscription.unsubscribe();// Stop when the countdown reaches zero
+        }
+      }
+      else{
+        this.timerSubscription.unsubscribe();// Stop when the countdown reaches zero
+      }
+    });
+  }
+
+
+
+ngOnDestroy() {
+  this.timerSubscription.unsubscribe();
+}
+
 
   getEpisodeSources(episodeId:string,episodeNumber:number,epName:string){
 
     this.showVideoPlayer = false;
     this.selectedEpisodeName = epName;
     this.selectedEpisodeId = episodeId;
+    this.selectedEpisodeNumber = episodeNumber;
 
     this.aniListService.getEpisodeSources(episodeId,episodeNumber,Number(this.animeId)).subscribe({
       next: (v) => {
