@@ -4,6 +4,7 @@
   left: 0;
   background-color: rgba(11, 11, 11, 0.52);
   min-width: 100vw;
+  z-index: 11;
 }
 .config-form form{
   background-color: white;
