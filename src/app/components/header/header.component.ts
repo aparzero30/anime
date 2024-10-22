@@ -39,9 +39,12 @@ export class HeaderComponent implements AfterViewInit {
 
 
   ngOnInit(): void {
+    this.initHighlight()
     this.setTrendingActive();
   }
   ngAfterViewInit(): void {
+    this.initHighlight()
+
     this.setTrendingActive();
   }
 
@@ -103,6 +106,19 @@ export class HeaderComponent implements AfterViewInit {
     highlightElement.style.maxWidth = `${rect.width}px`; // Corrected camelCase
   }
 
+
+  initHighlight(){
+    const highlightElement = this.highlightRef.nativeElement;
+    // highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
+    // highlightElement.style.top = `0px`;
+    // highlightElement.style.left = `0px`;
+    highlightElement.style.width = `0px`;
+    highlightElement.style.height = `0px`;
+    highlightElement.style.minHeight = `0px`;
+    highlightElement.style.minWidth = `0px`;
+    highlightElement.style.maxHeight = `0px`;
+    highlightElement.style.maxWidth = `0px`;
+  }
 
 
 
