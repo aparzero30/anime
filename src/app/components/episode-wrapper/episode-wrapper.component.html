@@ -1,13 +1,13 @@
 <app-config-form *ngIf="configView"></app-config-form>
 
 <div class="col-12 d-flex flex-column episode-wrapper ">
-  <app-media-player [sources]="sources" *ngIf="showVideoPlayer" [episodeName]="selectedEpisodeName"
+  <app-media-player *ngIf="showVideoPlayer" [sources]="sources"  [episodeName]="selectedEpisodeName"
                     [color]="color" [episodeId]="selectedEpisodeId"
   ></app-media-player>
 
   <section class="col-12 p-1 d-flex">
     <section class="col-4 col-xl-6 col-xxl-6 col-lg06 col-md-6 d-flex controls d-flex flex-column">
-      <p>{{"Episode: "+nextAiring?.episode+" Airing In"}}</p>
+      <p *ngIf="nextAiring !== undefined">{{"Episode: "+nextAiring?.episode+" Airing In"}}</p>
       <label>{{nextAiring?.timeUntilAiring}}</label>
     </section>
     <section class="col-8 col-xl-6 col-xxl-6 col-lg06 col-md-6 d-flex gap-1 controls justify-content-end">
