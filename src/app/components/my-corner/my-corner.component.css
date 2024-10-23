@@ -14,18 +14,12 @@
 
 }
 
-.saved-anime::after {
-  content: '';
-  position: absolute; /* Position it relative to the parent */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: inherit; /* Inherit the background from the parent */
-  filter: grayscale(100%);
-  z-index: 0; /* Place it behind the children */
-  border-radius: 10px;
+.gradient{
+  background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.50));
+  height: auto;
+  min-height: 50vh;
 }
+
 
 
 .saved-anime h1 {
@@ -33,16 +27,17 @@
   font-weight: bolder;
   font-size: var(--large-font);
   z-index: 1; /* Ensure it is above the grayscale layer */
-  background-color: var(--primary-color);
   max-width: max-content;
   border-radius: 4px;
+  text-shadow: 2px 2px 2px var(--primary-color); /* Adjust color and size */
 }
 .my-wrapper{
   z-index: 1;
 }
 
 .trending-card{
-  background-color: rgba(0, 0, 0, 0.66);
+  /*background-color: rgba(0, 0, 0, 0.66);*/
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   cursor:  pointer;
   font-size: var(--medium-font);
@@ -59,7 +54,7 @@
   max-height: 140px;
 }
 .trending-card:hover{
-  background-color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.51);
   color: white;
 }
 .trending-card p {

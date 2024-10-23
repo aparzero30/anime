@@ -1,6 +1,6 @@
 <section class="col-12  p-1" (click)="viewAnime()">
   <section class="col-12 trending-card p-1 d-flex">
-    <img [src]="animePreview.image" class="col-5"/>
+    <img #card [src]="animePreview.image" class="col-5"/>
     <div class="col-7 d-flex flex-column p-1 gap-1">
       <p>{{animePreview.title.english}}</p>
       <label class="p- pt-1 pb-1">Episodes:{{animePreview.totalEpisodes}}</label>

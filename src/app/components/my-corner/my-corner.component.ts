@@ -19,8 +19,12 @@ import {TrendingCardComponent} from "../trending-card/trending-card.component";
 export class MyCornerComponent implements OnInit{
 
 
+  @ViewChild('myWrapper', { static: false }) wrapperRef!: ElementRef;
+
   saveAnimes:SaveAnime[] = [];
   @ViewChildren('card') cards!: QueryList<ElementRef>;
+
+  selectedAnime = "SAVED ANIMES"
 
   animeBanner = "https://s4.anilist.co/file/anilistcdn/media/anime/banner/162804-NwvD3Lya8IZp.jpg";
 
@@ -62,11 +66,15 @@ export class MyCornerComponent implements OnInit{
   }
 
 
-    setAnimeBanner(banner:string){
+  setAnimeBanner(banner:string,title:string){
       this.animeBanner = banner;
-      //alert(this.animeBanner)
+      this.selectedAnime = title;
     }
 
+  viewAnime(animeId:string){
+    window.open('/info/'+animeId, '_blank');
+    // this.router.navigate(['/leave-request/'+id]);
+  }
 
 
 
