@@ -1,0 +1,18 @@
+<div class="col-12 d-flex flex-column">
+  <section *ngIf="saveAnimes.length>0" class="col-12 p-1 d-flex flex-column saved-anime bg"
+           [ngStyle]="{'background-image': 'url(' + animeBanner + ')', 'background-size': 'cover', 'height': '200px'}">
+<!--    <h1 class="p-3">SAVED ANIME</h1>-->
+    <div class="wrapper d-flex">
+      <div  class="col-6 col-md-4 col-lg-2 col-xxl-2 col-xl-2 p-1 my-card" *ngFor="let anime of saveAnimes">
+        <section class="col-12 p-1 d-flex card-wrapper" (mouseenter)="setAnimeBanner(anime.banner)">
+          <img #card [src]="anime.poster" class="col-3"/>
+          <section class="d-flex flex-column p-1">
+            <p class="col-12">{{anime.title}}</p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+
+  </section>
+</div>

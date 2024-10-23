@@ -6,6 +6,7 @@ import {PopularPanelComponent} from "../../components/popular-panel/popular-pane
 import {NgIf} from "@angular/common";
 import {LoadingComponent} from "../../components/loading/loading.component";
 import {ErrorComponent} from "../../components/error/error.component";
+import {MyCornerComponent} from "../../components/my-corner/my-corner.component";
 
 @Component({
   selector: 'app-anime-page',
@@ -17,7 +18,8 @@ import {ErrorComponent} from "../../components/error/error.component";
     PopularPanelComponent,
     NgIf,
     LoadingComponent,
-    ErrorComponent
+    ErrorComponent,
+    MyCornerComponent
   ],
   templateUrl: './anime-page.component.html',
   styleUrl: './anime-page.component.css'
@@ -28,8 +30,14 @@ export class AnimePageComponent {
 
   showError = false;
 
+  showSaved = false;
+
   setShowSearchBar(show:boolean) {
     this.showSearchBar = show;
+  }
+
+  setShowSaved(show:boolean) {
+    this.showSaved  =show;
   }
 
   setShowError(show:boolean) {

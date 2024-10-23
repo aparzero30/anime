@@ -27,16 +27,17 @@ export class HeaderComponent {
 
 
 
-  trendingActive = true;
+  animeActive = true;
   searchActive = false;
-  popularActive = false;
+  savedActive = false;
 
 
   @Output() toggleSearch = new EventEmitter();
+  @Output() toggleSave = new EventEmitter();
 
-  @ViewChild('trending', { static: true }) trendingRef!: ElementRef;
+  @ViewChild('anime', { static: true }) animeRef!: ElementRef;
   @ViewChild('search', { static: true }) searchRef!: ElementRef;
-  @ViewChild('popular', { static: true }) popularRef!: ElementRef;
+  @ViewChild('saved', { static: true }) savedRef!: ElementRef;
   @ViewChild('highlight', { static: true }) highlightRef!: ElementRef;
 
 
@@ -57,11 +58,11 @@ export class HeaderComponent {
 
   @HostListener('window:resize')
   onResize() {
-    if(this.trendingActive) {
-      this.setTrendingActive()
+    if(this.animeActive) {
+      this.setAnimeActive()
     }
-    else if(this.popularActive){
-      this.setPopularActive()
+    else if(this.savedActive){
+      this.setSaveActive()
     }
     else{
       this.setSearchActive()
@@ -71,20 +72,16 @@ export class HeaderComponent {
 
 
 
-  setTrendingActive(){
+  setAnimeActive(){
 
 
-    this.trendingActive = true;
+    this.animeActive = true;
     this.searchActive = false;
-    this.popularActive = false;
+    this.savedActive = false;
     this.toggleSearch.emit(false);
+    this.toggleSave.emit(false);
 
-    console.log(this.trendingRef);
-
-
-
-
-    this.moveHighlight(this.trendingRef.nativeElement)
+    this.moveHighlight(this.animeRef.nativeElement)
 
   }
 
@@ -92,31 +89,32 @@ export class HeaderComponent {
   setSearchActive(){
 
     this.searchActive = true;
-    if(this.trendingRef){
-      this.moveHighlight(this.trendingRef.nativeElement)
+    if(this.animeRef){
+      this.moveHighlight(this.animeRef.nativeElement)
     }
 
     this.moveHighlight(this.searchRef.nativeElement)
 
-    this.trendingActive = false;
+    this.animeActive = false;
 
-    this.popularActive = false;
+    this.savedActive = false;
     this.toggleSearch.emit(true);
-
+    this.toggleSave.emit(false);
 
 
   }
 
-  setPopularActive(){
-    if(this.trendingRef){
-      this.moveHighlight(this.trendingRef.nativeElement)
+  setSaveActive(){
+    if(this.animeRef){
+      this.moveHighlight(this.animeRef.nativeElement)
     }
 
-    this.moveHighlight(this.popularRef.nativeElement)
-    this.trendingActive = false;
+    this.moveHighlight(this.savedRef.nativeElement)
+    this.animeActive = false;
     this.searchActive = false;
-    this.popularActive = true;
+    this.savedActive = true;
     this.toggleSearch.emit(false);
+    this.toggleSave.emit(true);
 
 
   }
@@ -125,7 +123,6 @@ export class HeaderComponent {
   moveHighlight(element: HTMLElement) {
     const highlightElement = this.highlightRef.nativeElement;
     const rect = element.getBoundingClientRect();
-    console.log(rect)
     highlightElement.style.position = 'absolute'; // Ensure the highlight is positioned correctly
     highlightElement.style.top = `${rect.top}px`;
     highlightElement.style.left = `${rect.left}px`;

@@ -8,6 +8,8 @@ import {MediaPlayerComponent} from "../media-player/media-player.component";
 import { Location } from '@angular/common';
 import {interval, Subscription} from "rxjs";
 import {ConfigFormComponent} from "../config-form/config-form.component";
+import {HistoryUtil} from "../../util/HistoryUtil";
+import {LastWatch} from "../../models/LastWatch";
 
 @Component({
   selector: 'app-episode-wrapper',
@@ -67,6 +69,10 @@ export class EpisodeWrapperComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
+    window.addEventListener('beforeunload', this.setLastEpisode.bind(this)); // Correctly referencing the method
+
+
     const routeEpisodeId = this.route.snapshot.paramMap.get("episode-id");
     if(routeEpisodeId !== undefined && routeEpisodeId !== null){
        this.selectedEpisodeId = routeEpisodeId;
@@ -148,7 +154,22 @@ export class EpisodeWrapperComponent implements OnInit{
 
 ngOnDestroy() {
   this.timerSubscription.unsubscribe();
+  window.removeEventListener('beforeunload', this.setLastEpisode.bind(this)); // Correctly referencing the method
+  this.setLastEpisode();
+
 }
+
+setLastEpisode(){
+  if(this.selectedEpisodeIndex && this.animeId && this.episodes){
+    const lastWatch:LastWatch={
+      animeId: this.animeId,
+      lastEpisode: this.episodes[this.selectedEpisodeIndex],
+    }
+    HistoryUtil.saveLastEpisode(lastWatch)
+  }
+}
+
+
 
 
   getEpisodeSources(episode:Episode){

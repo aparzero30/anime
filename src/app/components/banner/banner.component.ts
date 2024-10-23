@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgStyle} from "@angular/common";
 import {ArtWork} from "../../models/AnimeInfo";
 import {DesignUtil} from "../../util/DesignUtil";
+import {HistoryUtil} from "../../util/HistoryUtil";
+import {SaveAnime} from "../../models/SaveAnime";
 
 @Component({
   selector: 'app-banner',
@@ -19,6 +21,7 @@ export class BannerComponent implements OnInit{
   @Input() genres:string[]|undefined;
   @Input() description:string|undefined;
   @Input() color:string|undefined;
+  @Input() animeId:string|undefined;
 
   posterImage = "";
   bannerImage = "";
@@ -29,11 +32,26 @@ export class BannerComponent implements OnInit{
 
 
   ngOnInit(): void {
-
     this.getImages();
-
-
   }
+
+  manageSave(){
+    if(this.animeId){
+      if(HistoryUtil.exist(this.animeId)){
+        HistoryUtil.remove(this.animeId);
+      }
+      else{
+        if(this.bannerUrl && this.posterUrl && this.animeId && this.title){
+          const saveAnime:SaveAnime={banner: this.bannerUrl, id: this.animeId, lastEpisode: undefined, poster: this.posterUrl, title: this.title}
+          HistoryUtil.saveAnime(saveAnime);
+        }
+      }
+    }
+  }
+
+
+
+
 
 
   getImages(){
@@ -66,4 +84,5 @@ export class BannerComponent implements OnInit{
 
 
   protected readonly DesignUtil = DesignUtil;
+  protected readonly HistoryUtil = HistoryUtil;
 }
