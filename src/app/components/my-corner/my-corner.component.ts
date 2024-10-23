@@ -46,10 +46,11 @@ export class MyCornerComponent implements OnInit{
     const cardElements = this.cards.toArray();
     if (cardElements.length > 0) {
       const initialHeight = cardElements[0].nativeElement.offsetHeight;
+      const initialWidth = cardElements[0].nativeElement.offsetWidth;
 
-      const firstCardHeight = initialHeight>30? initialHeight:37;
-
-      console.log(firstCardHeight)
+      //const firstCardHeight = initialHeight>30? initialHeight:37;
+      const firstCardHeight =  initialWidth+(initialWidth/2)-10;
+      console.log(cardElements[0].nativeElement.width)
 
       cardElements.forEach(card => {
         card.nativeElement.style.height = `${firstCardHeight}px`;
