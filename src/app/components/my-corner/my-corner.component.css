@@ -33,38 +33,45 @@
   max-width: max-content;
   border-radius: 4px;
 }
-
-.gradient{
-  /*background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0.5));*/
-  /*background-color: rgba(0, 0, 0, 0.45);*/
-  /*min-height: 20vh;*/
-  height: auto;
-  background-color: rgb(0, 0, 0);
-  border-radius: 10px;
-}
-.my-card{
+.my-wrapper{
   z-index: 1;
-  background-color: transparent;
-  border: none;
-  font-size: var(--medium-font);
 }
-.my-card p{
+
+.trending-card{
+  background-color: rgba(0, 0, 0, 0.66);
+  border-radius: 5px;
+  cursor:  pointer;
+  font-size: var(--medium-font);
+  overflow: hidden;
+  color: white;
+}
+.trending-card img{
+  /*height: 40%;*/
+  /*max-height: 40%;*/
+  /*min-height: 40%;*/
+  height: calc(50% * 2);
+  min-height: calc(50% * 2);
+  border-radius: 5px;
+  max-height: 140px;
+}
+.trending-card:hover{
+  background-color: var(--primary-color);
+  color: white;
+}
+.trending-card p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 2; /* Limits to 2 lines */
-  line-clamp: 2; /* Fallback for non-WebKit browsers */
+  -webkit-line-clamp: 1; /* Limits to 2 lines */
+  line-clamp: 1; /* Fallback for non-WebKit browsers */
   margin: 0 ;
-  line-height: var(--medium-font);
-  color: white;
-  cursor: pointer;
 }
-.card-wrapper{
-  background-color: rgba(0, 0, 0, 0.76);
-  border-radius: 4px;
-  cursor: pointer;
+
+.trending-card label{
+  margin: 0;
+  width: max-content;
+  border-radius: 3px;
+  font-size: var(--small-font);
 }
-.card-wrapper:hover{
-  background-color: black;
-}
+
 

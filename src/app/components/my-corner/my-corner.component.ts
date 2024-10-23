@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewC
 import {SaveAnime} from "../../models/SaveAnime";
 import {HistoryUtil} from "../../util/HistoryUtil";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {TrendingCardComponent} from "../trending-card/trending-card.component";
 
 @Component({
   selector: 'app-my-corner',
@@ -9,7 +10,8 @@ import {NgForOf, NgIf, NgStyle} from "@angular/common";
   imports: [
     NgForOf,
     NgStyle,
-    NgIf
+    NgIf,
+    TrendingCardComponent
   ],
   templateUrl: './my-corner.component.html',
   styleUrl: './my-corner.component.css'
@@ -27,6 +29,8 @@ export class MyCornerComponent implements OnInit{
         if(this.saveAnimes.length > 0){
           this.animeBanner = this.saveAnimes[0].banner;
         }
+
+
 
     }
 
@@ -55,8 +59,6 @@ export class MyCornerComponent implements OnInit{
       });
     }
   }
-
-
 
 
     setAnimeBanner(banner:string){
