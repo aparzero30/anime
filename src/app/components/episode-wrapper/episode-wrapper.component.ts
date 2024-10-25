@@ -30,6 +30,7 @@ export class EpisodeWrapperComponent implements OnInit{
  @Input() animeId!:string|undefined;
  @Input() color!:string;
  @Input() nextAiring!:Airing|undefined;
+ @Input() animeTitle!:string|undefined;
 
 
  configView = false;
@@ -160,9 +161,14 @@ ngOnDestroy() {
 }
 
 setLastEpisode(){
-  if(this.selectedEpisodeIndex && this.animeId && this.episodes){
+  if(this.selectedEpisodeIndex && this.animeId && this.episodes && this.animeTitle){
+
+
+    const url = "/info/"+this.animeId+"/episode/"+this.selectedEpisodeId;
     const lastWatch:LastWatch={
+      url:url,
       animeId: this.animeId,
+      animeTitle:this.animeTitle,
       lastEpisode: this.episodes[this.selectedEpisodeIndex],
     }
     HistoryUtil.saveLastEpisode(lastWatch)
@@ -179,6 +185,7 @@ setLastEpisode(){
     this.selectedEpisodeId = episode.id;
     this.selectedEpisodeNumber = episode.number;
     this.setSelectedIndex(episode)
+    this.setLastEpisode()
 
     this.aniListService.getEpisodeSources(this.selectedEpisodeId,this.selectedEpisodeNumber ,Number(this.animeId)).subscribe({
       next: (v) => {

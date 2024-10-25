@@ -3,6 +3,7 @@ import {SaveAnime} from "../../models/SaveAnime";
 import {HistoryUtil} from "../../util/HistoryUtil";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {TrendingCardComponent} from "../trending-card/trending-card.component";
+import {LastWatch} from "../../models/LastWatch";
 
 @Component({
   selector: 'app-my-corner',
@@ -20,9 +21,13 @@ export class MyCornerComponent implements OnInit{
 
 
   @ViewChild('myWrapper', { static: false }) wrapperRef!: ElementRef;
+  @ViewChildren('card') cards!: QueryList<ElementRef>;
 
   saveAnimes:SaveAnime[] = [];
-  @ViewChildren('card') cards!: QueryList<ElementRef>;
+  watchedEpisodes:LastWatch[] = [];
+
+
+
 
   selectedAnime = "SAVED ANIMES"
 
@@ -33,9 +38,7 @@ export class MyCornerComponent implements OnInit{
         if(this.saveAnimes.length > 0){
           this.animeBanner = this.saveAnimes[0].banner;
         }
-
-
-
+        this.watchedEpisodes = HistoryUtil.getAllLastEpisodes();
     }
 
   ngAfterViewInit(): void {
@@ -76,6 +79,10 @@ export class MyCornerComponent implements OnInit{
     // this.router.navigate(['/leave-request/'+id]);
   }
 
+  episodeClickHandler(url:string){
+    console.log(url);
+    window.open(url, '_blank');
+  }
 
 
 }

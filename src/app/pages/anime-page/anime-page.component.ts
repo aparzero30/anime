@@ -30,7 +30,7 @@ export class AnimePageComponent {
 
   showError = false;
 
-  showSaved = false;
+  showSaved = true;
 
   setShowSearchBar(show:boolean) {
     this.showSearchBar = show;

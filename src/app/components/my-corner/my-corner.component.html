@@ -6,14 +6,13 @@
                         'height': '200px'
                        }"
   >
-    <div class="col-12 d-flex flex-column gradient  p-1">
+    <div class="col-12 d-flex flex-column gradient  p-1" *ngIf="watchedEpisodes.length>0" >
       <section class="col-12 d-flex flex-wrap my-wrapper">
         <h1 class="p-3">{{selectedAnime}}</h1>
         <div class="col-12 d-flex flex-wrap">
           <div class="col-6 col-md-4 col-lg-2 col-xxl-2 col-xl-2" *ngFor="let anime of saveAnimes">
             <section class="col-12  p-1" (mouseenter)="setAnimeBanner(anime.banner,anime.title)" (click)="viewAnime(anime.id)">
               <section class="col-12 trending-card p-1 d-flex">
-
                 <div class="col-5 poster-wrapper">
                   <img [src]="anime.poster" class="col-12" #card/>
                 </div>
@@ -32,4 +31,24 @@
     </div>
 
   </section>
+
+  <div class="col-12 d-flex flex-column ep-wrapper p-1 mt-2">
+    <h1 class="col-12 p-3">Last Watched</h1>
+    <section class="col-12 d-flex flex-wrap">
+      <div class="col-6 col-md-4 col-lg-2 col-xxl-2 col-xl-2 p-1" *ngFor="let ep of watchedEpisodes" (click)="episodeClickHandler(ep.url)">
+        <div class="ep-card col-12 p-1 d-flex">
+          <img class="col-5" [src]="ep.lastEpisode.image" #card>
+          <div class="col-7 p-1 d-flex flex-column">
+            <p>{{ep.animeTitle}}</p>
+            <p>{{ep.lastEpisode.title}}</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+
+
+
 </div>

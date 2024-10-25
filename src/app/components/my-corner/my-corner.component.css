@@ -44,7 +44,7 @@
   overflow: hidden;
   color: white;
 }
-.trending-card img{
+.trending-card img, .ep-card img{
   /*height: 40%;*/
   /*max-height: 40%;*/
   /*min-height: 40%;*/
@@ -57,7 +57,8 @@
   background-color: rgba(0, 0, 0, 0.51);
   color: white;
 }
-.trending-card p {
+.trending-card p, .ep-card p {
+  font-size: var(--medium-font);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -66,7 +67,7 @@
   margin: 0 ;
 }
 
-.trending-card label{
+.trending-card labe{
   margin: 0;
   width: max-content;
   border-radius: 3px;
@@ -74,3 +75,22 @@
 }
 
 
+.ep-wrapper{
+  /*background-color: var(--primary-color);*/
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--light-bg);
+  border-radius: 5px;
+  /*max-height: 50vh;*/
+  /*min-height: 50vh;*/
+}
+.ep-card {
+  background-color: var(--light-bg);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ep-card:hover{
+  color: white;
+  background-color: var(--primary-color);
+}
