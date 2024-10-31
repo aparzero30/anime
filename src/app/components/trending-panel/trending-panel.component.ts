@@ -47,12 +47,12 @@ export class TrendingPanelComponent implements OnInit{
 
   incrementPage(){
     this.nextLoading = true;
-    this.currentPage++;
+    ++this.currentPage;
     this.getTrending();
   }
   decrementPage(){
     this.previousLoading = true;
-    this.currentPage--;
+    --this.currentPage;
     this.getTrending();
   }
 

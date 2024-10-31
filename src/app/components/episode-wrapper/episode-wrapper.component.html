@@ -4,6 +4,9 @@
   <app-media-player *ngIf="showVideoPlayer" [sources]="sources"  [episodeName]="selectedEpisodeName"
                     [color]="color" [episodeId]="selectedEpisodeId"
   ></app-media-player>
+  <div class="col-12 media-loading" *ngIf="!showVideoPlayer" >
+    <video width="100%" height="auto"></video>
+  </div>
 
   <section class="col-12 p-1 d-flex">
     <section class="col-4 col-xl-6 col-xxl-6 col-lg06 col-md-6 d-flex controls d-flex flex-column">
