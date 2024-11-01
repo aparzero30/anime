@@ -4,7 +4,12 @@
   <app-media-player *ngIf="showVideoPlayer" [sources]="sources"  [episodeName]="selectedEpisodeName"
                     [color]="color" [episodeId]="selectedEpisodeId"
   ></app-media-player>
-  <div class="col-12 media-loading" *ngIf="!showVideoPlayer" >
+  <div class="col-12 media-loading p-2" *ngIf="!showVideoPlayer"
+       [ngStyle]="{
+             'background-image': banner !== undefined ? 'url(' + banner + ')' : 'url(assets/loading.gif)'
+             }"
+  >
+    <app-loading-text></app-loading-text>
     <video width="100%" height="auto"></video>
   </div>
 

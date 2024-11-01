@@ -10,6 +10,7 @@ import {interval, Subscription} from "rxjs";
 import {ConfigFormComponent} from "../config-form/config-form.component";
 import {HistoryUtil} from "../../util/HistoryUtil";
 import {LastWatch} from "../../models/LastWatch";
+import {LoadingTextComponent} from "../loading-text/loading-text.component";
 
 @Component({
   selector: 'app-episode-wrapper',
@@ -20,7 +21,8 @@ import {LastWatch} from "../../models/LastWatch";
     NgIf,
     NgClass,
     NgStyle,
-    ConfigFormComponent
+    ConfigFormComponent,
+    LoadingTextComponent
   ],
   templateUrl: './episode-wrapper.component.html',
   styleUrl: './episode-wrapper.component.css'
@@ -31,6 +33,7 @@ export class EpisodeWrapperComponent implements OnInit{
  @Input() color!:string;
  @Input() nextAiring!:Airing|undefined;
  @Input() animeTitle!:string|undefined;
+ @Input() banner!:string|undefined;
 
 
  configView = false;

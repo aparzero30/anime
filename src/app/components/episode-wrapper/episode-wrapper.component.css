@@ -1,10 +1,11 @@
 
 .media-loading{
   border-radius: 5px;
-  background-image: url("../../../assets/loading.gif");
+  /*background-image: url("../../../assets/loading.gif");*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
 }
 
 .ep-card label{
